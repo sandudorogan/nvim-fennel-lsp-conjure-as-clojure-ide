@@ -35,14 +35,21 @@
   ;; theme
   :projekt0n/github-nvim-theme {:mod :theme}
   :kyazdani42/nvim-web-devicons {}
+  ;:romgrk/doom-one.vim {:mod :theme}
+  ;:folke/tokyonight.nvim {}
 
   ;; status line
-  :nvim-lualine/lualine.nvim {:mod :lualine}
+  :nvim-lualine/lualine.nvim {:requires [:kyazdani42/nvim-web-devicons]
+                              :mod      :lualine}
 
   ;; file searching
   :nvim-telescope/telescope.nvim {:requires [:nvim-lua/popup.nvim
                                              :nvim-lua/plenary.nvim]
-                                  :mod :telescope}
+                                  :mod      :telescope}
+
+  ;; file explorer 
+  :kyazdani42/nvim-tree.lua {:requires [:kyazdani42/nvim-web-devicons]
+                             :mod      :filetree}
 
   ;; repl tools
   :Olical/conjure {:branch :master :mod :conjure}
@@ -50,8 +57,18 @@
   ;; sexp
   :guns/vim-sexp {:mod :sexp}
   :tpope/vim-sexp-mappings-for-regular-people {}
-  :tpope/vim-repeat {}
   :tpope/vim-surround {}
+  :tpope/vim-repeat {}
+
+  :tpope/vim-fugitive {}
+  :tpope/vim-commentary {}
+  :tpope/vim-rhubarb {}
+  :andymass/vim-matchup {}
+
+  :jiangmiao/auto-pairs {}
+  :luochen1990/rainbow {}
+  :yuttie/comfortable-motion.vim {}
+  :haya14busa/incsearch.vim {}
 
   ;; parsing system
   :nvim-treesitter/nvim-treesitter {:run ":TSUpdate"
