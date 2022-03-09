@@ -26,6 +26,9 @@
 (nvim.set_keymap :n :<C-k> "<C-w><C-k>" {:noremap false})
 (nvim.set_keymap :n :<C-l> "<C-w><C-l>" {:noremap false})
 
+; Terminal normal mode on Esc
+(nvim.set_keymap :t :<Esc> :<C-\><C-n> {:noremap false})
+
 ; Replace all is aliased to S.
 (nvim.set_keymap :n :S ":%s//g<Left><Left>" {:noremap true})
 
