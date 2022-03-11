@@ -89,4 +89,20 @@
   (lsp.volar.setup {:filetypes    ["typescript" "javascript" "javascriptreact" "typescriptreact" "vue" "json"]
                     :capabilities capabilities
                     :on_attach    on_attach
-                    :handlers     handlers}))
+                    :handlers     handlers})
+
+  (lsp.bashls.setup {})
+  
+  (lsp.cssmodules_ls.setup {})
+
+  (lsp.tsserver.setup {})
+
+  (lsp.bashls.setup {})
+
+  (lsp.dockerls.setup {})
+  
+  (lsp.tailwindcss.setup {})
+  
+  (lsp.emmet_ls.setup {})
+  
+  (lsp.html.setup {:capabilities (set capabilities.textDocument.completion.completionItem.snippetSupport true)}))

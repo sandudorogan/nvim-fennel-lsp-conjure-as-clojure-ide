@@ -2,8 +2,9 @@
   {autoload {treesitter nvim-treesitter.configs}})
 
 (treesitter.setup {:highlight {:enable true}
-                   :indent {:enable true}
-                   :ensure_installed ["clojure" 
-                                      "javascript" "typescript" "tsx"
-                                      "comment" "css" "dockerfile"
-                                      "json"]})
+                   :autotag   {:enable true}
+                   :indent    {:enable true}
+                   :ensure_installed ["clojure" "html" "http" "vue" "vim"
+                                      "javascript" "typescript" "tsx" "scss" "python"
+                                      "comment" "css" "dockerfile" "bash" "fennel"
+                                      "json" "make" "markdown"]})

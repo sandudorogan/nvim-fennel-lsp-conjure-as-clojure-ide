@@ -27,7 +27,7 @@
 (nvim.set_keymap :n :<C-l> "<C-w><C-l>" {:noremap false})
 
 ; Terminal normal mode on Esc
-(nvim.set_keymap :t :<Esc> :<C-\><C-n> {:noremap false})
+(nvim.set_keymap :t :<Esc><Esc> :<C-\><C-n> {:noremap false})
 
 ; Replace all is aliased to S.
 (nvim.set_keymap :n :S ":%s//g<Left><Left>" {:noremap true})
@@ -50,6 +50,22 @@
 (augroup yank-highlight
          (nvim.ex.autocmd :TextYankPost "*" :silent! "lua vim.highlight.on_yank()"))
 
+(when (= (nvim.fn.has "wsl") 1)
+  ; WSL system clipboard integration.
+  ; Uses this helper: https://github.com/equalsraf/win32yank/releases
+  (set nvim.g.clipboard {"name" "win32yank"
+                         "copy" {"+" "win32yank -i --crlf"
+                                 "*" "win32yank -i --crlf"}
+                         "paste" {"+" "win32yank -o --lf"
+                                  "*" "win32yank -o --lf"}
+                         "cache_enabled" 1}))
+
+(augroup indent
+         (nvim.ex.autocmd "BufNewFile,BufRead"
+                          "*.html,*.js,*.json,*.tf,*.tfvars,*.vue,*.scss,*.css"
+                          :setlocal "shiftwidth=2")
+         (nvim.ex.autocmd :BufWritePre :* :%s/\s\+$//e))
+
 ;sets nvim global options
 (let [options
       {;settings needed for compe autocompletion
@@ -60,10 +76,12 @@
        :smartcase true
        ;shared clipboard with linux
        :clipboard "unnamedplus"
-       ; Reload unedited, externally changed files. 
+       ; Reload unedited, externally changed files.
        :autoread true
        ; expand tabs into spaces
        :expandtab true
+       :shiftwidth 4
+       :tabstop 4
        :number true
        :relativenumber true
        :history 10000
