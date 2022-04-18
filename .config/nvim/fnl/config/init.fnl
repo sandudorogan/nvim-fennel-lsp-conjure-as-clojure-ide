@@ -66,6 +66,14 @@
                           :setlocal "shiftwidth=2")
          (nvim.ex.autocmd :BufWritePre :* :%s/\s\+$//e))
 
+(augroup save
+         (nvim.ex.autocmd :FocusLost :* "silent!" :wa)
+         (nvim.ex.autocmd :BufReadPost :* "if line(\"'\"\") > 1 && line(\"'\"\") <= line(\"$\") | exe \"normal! g'\"\" | endif"))
+
+; au FocusLost * silent! wa " save on blur
+
+; au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif " save file position
+
 ;sets nvim global options
 (let [options
       {;settings needed for compe autocompletion
@@ -95,7 +103,7 @@
        :smartindent true
        :smarttab true
        :splitbelow true
-       ;:colorscheme "tokyonight"
+       ; :colorscheme "doom-one"
        :splitright true}]
   (each [option value (pairs options)]
     (core.assoc nvim.o option value)))

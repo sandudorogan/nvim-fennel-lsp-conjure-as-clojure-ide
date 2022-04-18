@@ -33,7 +33,9 @@
   :Olical/aniseed {:branch :develop}
 
   ;; theme
-  :projekt0n/github-nvim-theme {:mod :theme}
+  ;:projekt0n/github-nvim-theme {:mod :theme}
+  ; :NTBBloodbath/doom-one.nvim {:mod :theme}
+  :folke/tokyonight.nvim {:mod :theme}
   :kyazdani42/nvim-web-devicons {}
   ;:romgrk/doom-one.vim {:mod :theme}
   ;:folke/tokyonight.nvim {}
@@ -65,13 +67,20 @@
   :tpope/vim-rhubarb {}
   :andymass/vim-matchup {}
 
+  :TimUntersberger/neogit {:requires [:nvim-lua/plenary.nvim]}
+
   :jiangmiao/auto-pairs {}
   :luochen1990/rainbow {}
   :yuttie/comfortable-motion.vim {}
   :haya14busa/incsearch.vim {}
 
+  :folke/zen-mode.nvim {:requires [:folke/twilight.nvim]}
+
   ;; parsing system
-  :nvim-treesitter/nvim-treesitter {:run ":TSUpdate"
+  :nvim-treesitter/nvim-treesitter {:requires [:JoosepAlviste/nvim-ts-context-commentstring
+                                               :windwp/nvim-ts-autotag
+                                               :nvim-treesitter/nvim-treesitter-refactor]
+                                    :run ":TSUpdate"
                                     :mod :treesitter}
 
   ;; lsp

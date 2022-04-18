@@ -21,6 +21,8 @@ end
 ensure("wbthomason", "packer.nvim")
 ensure("Olical", "aniseed")
 
+vim.cmd[[colorscheme tokyonight]]
+
 -- Enable Aniseed's automatic compilation and loading of Fennel source code.
 vim.g["aniseed#env"] = {
   module = "config.init",
