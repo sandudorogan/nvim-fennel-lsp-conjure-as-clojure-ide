@@ -21,6 +21,7 @@ end
 ensure("wbthomason", "packer.nvim")
 ensure("Olical", "aniseed")
 
+vim.g.tokyonight_style = "day"
 vim.cmd[[colorscheme tokyonight]]
 
 -- Enable Aniseed's automatic compilation and loading of Fennel source code.
