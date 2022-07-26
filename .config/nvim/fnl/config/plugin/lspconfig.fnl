@@ -52,9 +52,18 @@
                     (nvim.buf_set_keymap bufnr :n :<leader>lk "<cmd>lua vim.diagnostic.goto_prev()<CR>" {:noremap true})
                     (nvim.buf_set_keymap bufnr :n :<leader>la "<cmd>lua vim.lsp.buf.code_action()<CR>" {:noremap true})
                     (nvim.buf_set_keymap bufnr :v :<leader>la "<cmd>lua vim.lsp.buf.range_code_action()<CR> " {:noremap true})
+
+                    (nvim.buf_set_keymap bufnr :n :crcc "<cmd>lua vim.lsp.buf.execute_command({command = 'cycle-coll', arguments = {'file://' ..vim.fn.expand('%:p'), vim.fn.line('.') - 1, vim.fn.col('.') - 1}})<CR>" {:noremap true})
+                    (nvim.buf_set_keymap bufnr :n :crth "<cmd>lua vim.lsp.buf.execute_command({command = 'thread-first', arguments = {'file://' ..vim.fn.expand('%:p'), vim.fn.line('.') - 1, vim.fn.col('.') - 1}})<CR>" {:noremap true})
+                    (nvim.buf_set_keymap bufnr :n :crtt "<cmd>lua vim.lsp.buf.execute_command({command = 'thread-last', arguments = {'file://' ..vim.fn.expand('%:p'), vim.fn.line('.') - 1, vim.fn.col('.') - 1}})<CR>" {:noremap true})
+                    (nvim.buf_set_keymap bufnr :n :crtf "<cmd>lua vim.lsp.buf.execute_command({command = 'thread-first-all', arguments = {'file://' ..vim.fn.expand('%:p'), vim.fn.line('.') - 1, vim.fn.col('.') - 1}})<CR>" {:noremap true})
+                    (nvim.buf_set_keymap bufnr :n :crtl "<cmd>lua vim.lsp.buf.execute_command({command = 'thread-last-all', arguments = {'file://' ..vim.fn.expand('%:p'), vim.fn.line('.') - 1, vim.fn.col('.') - 1}})<CR>" {:noremap true})
+                    (nvim.buf_set_keymap bufnr :n :cruw "<cmd>lua vim.lsp.buf.execute_command({command = 'unwind-thread', arguments = {'file://' ..vim.fn.expand('%:p'), vim.fn.line('.') - 1, vim.fn.col('.') - 1}})<CR>" {:noremap true})
+                    (nvim.buf_set_keymap bufnr :n :crua "<cmd>lua vim.lsp.buf.execute_command({command = 'unwind-all', arguments = {'file://' ..vim.fn.expand('%:p'), vim.fn.line('.') - 1, vim.fn.col('.') - 1}})<CR>" {:noremap true})
+
                     ;telescope
                     (nvim.buf_set_keymap bufnr :n :<leader>lw ":lua require('telescope.builtin').lsp_workspace_diagnostics()<cr>" {:noremap true})
-                    (nvim.buf_set_keymap bufnr :n :<leader>lr ":lua require('telescope.builtin').lsp_references()<cr>" {:noremap true})
+                    (nvim.buf_set_keymap bufnr :n :gr ":lua require('telescope.builtin').lsp_references()<cr>" {:noremap true})
                     (nvim.buf_set_keymap bufnr :n :<leader>li ":lua require('telescope.builtin').lsp_implementations()<cr>" {:noremap true})))]
 
   ; nnoremap <silent> crcc :call CocRequest('clojure-lsp', 'workspace/executeCommand', {'command': 'cycle-coll', 'arguments': [Expand('%:p'), line('.') - 1, col('.') - 1]})<CR>
