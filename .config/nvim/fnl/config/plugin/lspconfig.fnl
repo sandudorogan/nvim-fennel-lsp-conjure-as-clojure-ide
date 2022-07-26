@@ -87,41 +87,18 @@
                           :capabilities capabilities})
 
   ;; Vue volar 
-  (let [get_typescript_server_path (fn [root_dir]
-                                     (let [project_root (util.find_node_modules_ancestor root_dir)
-                                           local_tsserverlib (and project_root
-                                                                  (util.path.join project_root "node_modules" "typescript" "lib" "tsserverlibrary.js"))
-                                           global_tsserverlib "/usr/local/lib/node_modules/typescript/lib/tsserverlibrary.js"]
-                                       (if (and local_tsserverlib (util.path.exists local_tsserverlib))
-                                         local_tsserverlib
-                                         global_tsserverlib)))]
-
-    (lsp.volar.setup {:filetypes    ["typescript" "javascript" "javascriptreact" "typescriptreact" "vue" "json"]
-                      :capabilities capabilities
-                      :on_attach    on_attach
-                      :handlers     handlers
-                      :config       {:on_new_config #(set %1.init_options.typescript.serverPath (get_typescript_server_path %2))}})
-    ; (lsp.vuels.setup {:capabilities capabilities
-    ;                   :on_attach    on_attach
-    ;                   :handlers     handlers})
-    )
-
+  (lsp.volar.setup {:filetypes    ["typescript" "javascript" "javascriptreact" "typescriptreact" "vue" "json"]
+                    :capabilities capabilities
+                    :handlers     handlers
+                    :on_attach    on_attach
+                    :init_options {:typescript {:serverPath "/Users/sandu/.config/nvm/versions/node/v14.19.2/lib/node_modules/typescript/lib/tsserverlibrary.js"}}})
   (lsp.bashls.setup {})
-
   (lsp.cssmodules_ls.setup {})
-
   (lsp.tsserver.setup {})
-
   (lsp.bashls.setup {})
-
-(lsp.dockerls.setup {})
-
-(lsp.tailwindcss.setup {})
-
-(lsp.emmet_ls.setup {})
-
-(lsp.sqlls.setup {})
-
-(lsp.vimls.setup {})
-
-(lsp.html.setup {:capabilities (set capabilities.textDocument.completion.completionItem.snippetSupport true)}))
+  (lsp.dockerls.setup {})
+  (lsp.tailwindcss.setup {})
+  (lsp.emmet_ls.setup {})
+  (lsp.sqlls.setup {})
+  (lsp.vimls.setup {})
+  (lsp.html.setup {:capabilities (set capabilities.textDocument.completion.completionItem.snippetSupport true)}))
